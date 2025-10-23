@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiges Machinery</title>
+    <style>
+        /* Base Reset & Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        h1, h2, h3 { margin-bottom: 1rem; }
+        h2 { font-size: 2rem; text-align: center; padding: 2rem 0; }
+        img { max-width: 100%; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
+
+        /* Header Styles */
+        header { background: #f8f8f8; padding: 1rem 0; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        
+        /* --- MODIFICATION 1, 2, 3: Call Now Styles --- */
+        .call-now a { 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.3rem; /* Made bigger */
+            text-align: right; 
+        }
+        .call-now .call-text {
+            display: block;
+            color: red; /* Changed to red */
+        }
+        .call-now .call-number {
+            display: block;
+            color: #0056b3; 
+        }
+        /* --- End Modifications --- */
+
+        /* Hero Section with Background Image */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/1200/800') no-repeat center center/cover; 
+            color: white; 
+            padding: 4rem 0; 
+            text-align: center; 
+        }
+        .hero-content { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .features { list-style: none; margin: 2rem 0; text-align: left; display: inline-block; }
+        .features li { margin-bottom: 0.5rem; }
+        .hero-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; }
+        .hero-text, .quote-form { flex: 1; min-width: 300px; }
+        .quote-form { background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 5px; color: #333; }
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; }
+        .btn { 
+            display: inline-block; 
+            background: #0056b3; 
+            color: white; 
+            padding: 0.75rem 1.5rem; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 1rem; 
+        }
+
+        /* Section Common Styles */
+        .about, .services, .gallery, .testimonials, .map { padding: 4rem 0; }
+        .about-container { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+        .about-img, .about-text { flex: 1; min-width: 300px; }
+        
+        .about-img img {
+            width: 100%;
+            height: 450px; 
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .about-text { text-align: left; }
+
+        /* --- MODIFICATION 5: About Us Paragraph Spacing --- */
+        .about-text p {
+            margin-bottom: 1.5rem; /* Added space between paragraphs */
+        }
+        /* --- End Modification 5 --- */
+
+        /* --- MODIFICATION 4: Darker Text Style --- */
+        .dark-text {
+            font-weight: bold;
+            color: #111; /* Darker than default #333 */
+        }
+        /* --- End Modification 4 --- */
+
+
+        /* Services, Gallery & Testimonials Grid */
+        .services-grid, .gallery-grid, .testimonials-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+        }
+
+        .service-card { 
+            background: #f8f8f8; 
+            padding: 0;
+            border-radius: 5px; 
+            text-align: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            overflow: hidden; 
+        }
+        .service-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .service-card h3, .service-card p {
+            padding: 0 1.5rem; 
+        }
+        .service-card h3 {
+            margin-top: 1.5rem; 
+        }
+        .service-card p {
+            padding-bottom: 1.5rem; 
+        }
+
+        .gallery-card {
+            background: #f8f8f8; 
+            padding: 1.5rem; 
+            border-radius: 5px; 
+            text-align: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        
+        .testimonials { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/1200/600') no-repeat center center/cover; 
+            color: white; 
+        }
+        .testimonial-card { background: rgba(255,255,255,0.1); color: white; }
+
+        /* Map Section */
+        .map iframe { width: 100%; height: 450px; border: 0; border-radius: 5px; }
+
+        /* Footer */
+        footer { background: #333; color: white; text-align: center; padding: 2rem 0; }
+
+        /* Chat Bot Styles */
+        .chat-bot-btn { 
+            position: fixed; 
+            bottom: 2rem; 
+            right: 2rem; 
+            background: #0056b3; 
+            color: white; 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+            z-index: 1000; 
+            border: none;
+            font-size: 1.5rem;
+        }
+        .chat-window { 
+            display: none; 
+            position: fixed; 
+            bottom: 5rem; 
+            right: 2rem; 
+            width: 350px; 
+            max-width: 90vw; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+            z-index: 1000; 
+            overflow: hidden; 
+        }
+        .chat-header { 
+            background: #0056b3; 
+            color: white; 
+            padding: 1rem; 
+            text-align: center; 
+        }
+        .chat-options, .chat-sms, .chat-live { padding: 1rem; }
+        .chat-option-btn { 
+            display: block; 
+            width: 100%; 
+            padding: 0.75rem; 
+            margin: 0.5rem 0; 
+            background: #f0f0f0; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            text-align: left; 
+        }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 0.5rem; margin: 1rem 0; font-size: 0.8rem; }
+        .checkbox-group input { margin-top: 0.2rem; }
+        .message-input { 
+            display: flex; 
+            padding: 0.5rem; 
+            border-top: 1px solid #eee; 
+            background: #f9f9f9; 
+        }
+        .message-input input { 
+            flex: 1; 
+            padding: 0.75rem; 
+            border: 1px solid #ddd; 
+            border-radius: 20px; 
+            margin-right: 0.5rem; 
+        }
+        .send-btn { 
+            background: #0056b3; 
+            color: white; 
+            border: none; 
+            border-radius: 20px; 
+            padding: 0 1rem; 
+            cursor: pointer; 
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container, .hero-container, .about-container { flex-direction: column; text-align: center; }
+            .call-now a { text-align: center; }
+            .hero h1 { font-size: 2rem; }
+            .services-grid, .gallery-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .chat-window { right: 1rem; width: calc(100vw - 2rem); }
+            .chat-bot-btn { bottom: 1rem; right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">HAIGES MACHINERY</div>
+            <div class="call-now">
+                <a href="tel:8476693300">
+                    <span class="call-text">Call Us Now</span>
+                    <span class="call-number">(847) 669-3300 &#128222;</span> </a>
+            </div>
+            </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h1>Premium Commercial Laundry Equipment Distributor Serving Wisconsin, Illinois, & Indiana</h1>
+                <p>No-Stress Laundry Solutions.</p>
+                <ul class="features">
+                    <li>Specializes in Designing & Building High Performance Laundry Systems</li>
+                    <li>Family Owned & Operated</li>
+                    <li>We "SERVICE" Our Customers</li>
+                    <li>Highly Trained Local Service</li>
+                    <li>Premium Lines of Equipment & Chemicals</li>
+                </ul>
+            </div>
+            <div class="quote-form">
+                <h3>Stress-Free Laundry Solutions - Get A Quote Today!</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Zip Code *</label>
+                        <input type="text" id="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="help">How can we help you? *</label>
+                        <textarea id="help" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">What can we help you with?</label>
+                        <select id="service">
+                            <option>Equipment Sales</option>
+                            <option>Service & Repair</option>
+                            <option>Laundry Design</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Get A Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container about-container">
+            <div class="about-img">
+                <img src="https://picsum.photos/600/500" alt="About Haiges Machinery">
+            </div>
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>The Haiges family legacy in the cleaning industry spans five generations, beginning in the late 1800s with dye shops and dry-cleaners. <span class="dark-text">Over time the family transitioned from laundry processing to equipment supplier and since 1967, Haiges Machinery has been a trusted leader in delivering innovative commercial and industrial laundry solutions across Illinois, Indiana, and Wisconsin.</span> We specialize in providing top-quality laundry and dry cleaning equipment, tailored to meet the unique needs of industries like hospitality, healthcare, laundromats, and more. <span class="dark-text">Our comprehensive services include expert equipment selection, professional installation, and reliable maintenance by certified technicians, ensuring minimal downtime and maximum efficiency for your operations.</span></p>
+                
+                <p>At Haiges, we pride ourselves on being more than just a supplier—we’re a partner dedicated to your success. From new and rebuilt equipment sales to customized service plans, we offer end-to-end solutions that enhance productivity and profitability. <span class="dark-text">Our commitment to exceptional customer service and industry expertise has earned us a reputation for reliability and professionalism.</span> Whether you’re upgrading a laundromat or outfitting a large-scale industrial laundry, Haiges Machinery delivers durable, high-performance equipment backed by unparalleled support. <span class="dark-text">Let us help you streamline your laundry operations with solutions designed for growth and efficiency.</span></p>
+                <a href="#" class="btn">Get A Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Laundry Design">
+                    <h3>Laundry Design</h3>
+                    <p>Custom design solutions for optimal laundry workflow and efficiency.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Commercial-Industrial Equipment">
+                    <h3>Commercial-Industrial Equipment</h3>
+                    <p>High-performance equipment for various industries.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Laundromat Development">
+                    <h3>Laundromat Development</h3>
+                    <p>Complete planning and setup for laundromat businesses.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=4" alt="Service Repairs">
+                    <h3>Service Repairs</h3>
+                    <p>Expert repair services by certified technicians.:cite[1]</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=5" alt="Spare Parts">
+                    <h3>Spare Parts</h3>
+                    <p>Genuine OEM parts for long-lasting performance.:cite[1]</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/300/200?random=6" alt="Laundry & Housekeeping Chemicals">
+                    <h3>Laundry & Housekeeping Chemicals</h3>
+                    <p>Premium chemical products for superior results.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn">Get A Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card"><img src="https://picsum.photos/300/200?random=10" alt="Gallery Image 1"></div>
+                <div class="gallery-card"><img src="https://picsum.photos/300/200?random=11" alt="Gallery Image 2"></div>
+                <div class="gallery-card"><img src="https://picsum.photos/300/200?random=12" alt="Gallery Image 3"></div>
+                <div class="gallery-card"><img src="https://picsum.photos/300/200?random=13" alt="Gallery Image 4"></div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn">Get A Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Just completed a year long project building a new commercial laundry plant. Matt, Jack, and Bryan were very helpful and great guys to work with. It was great partnering with them."</p>
+                    <h4>Ryan Magruder</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"This company is one of the most professional and competent companies we have ever worked with. Their knowledge and efficiency in fixing the service issue are incredible."</p>
+                    <h4>Husein Jivaji</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Best most honest people I know for service and parts excellent equipment refurbishers. they do what they say without question. They are my go to guys for all my reconditioned equipment."</p>
+                    <h4>Dennis Tretter</h4>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn">Get A Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="map">
+        <div class="container">
+            <h2>Find Us</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.089036884252!2d-88.371722684552!3d42.03647917920949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f1ec0b1a9354d%3A0x508db5f0d31eb0c9!2s11314%20E%20Main%20St%2C%20Huntley%2C%20IL%2060142%2C%20USA!5e0!3m2!1sen!2s!4v1698765432105!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 All Rights Reserved | Haiges Machinery, Inc. | +1 847-892-1621:cite[4]</p>
+        </div>
+    </footer>
+
+    <button class="chat-bot-btn">💬</button>
+    <div class="chat-window">
+        <div class="chat-header">
+            <h3>Have a question?</h3>
+            <p>Choose a chat option to get started.</p>
+        </div>
+        
+        <div class="chat-options">
+            <button class="chat-option-btn" data-option="sms">Chat via SMS/Email</button>
+            <button class="chat-option-btn" data-option="live">Chat via Live Chat</button>
+        </div>
+        
+        <div class="chat-sms" style="display: none;">
+            <p>Enter your question below and a representative will get right back to you.</p>
+            <div class="form-group">
+                <label for="sms-name">Name</label>
+                <input type="text" id="sms-name">
+            </div>
+            <div class="form-group">
+                <label for="sms-phone">Phone Number</label>
+                <input type="tel" id="sms-phone">
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="sms-agree">
+                <label for="sms-agree">By submitting you agree to receive SMS or e-mails for the provided channel. Rates may be applied.</label>
+            </div>
+            <button class="btn send-btn" style="width: 100%;">Send</button>
+        </div>
+        
+        <div class="chat-live" style="display: none;">
+            <p>Enter your question below and a representative will get right back to you.</p>
+            <div class="message-input">
+                <input type="text" placeholder="Type a message">
+                <button class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chat Bot Functionality
+        const chatBtn = document.querySelector('.chat-bot-btn');
+        const chatWindow = document.querySelector('.chat-window');
+        const chatOptions = document.querySelector('.chat-options');
+        const chatSMS = document.querySelector('.chat-sms');
+        const chatLive = document.querySelector('.chat-live');
+        const optionBtns = document.querySelectorAll('.chat-option-btn');
+
+        // Toggle chat window
+        chatBtn.addEventListener('click', () => {
+            const isVisible = chatWindow.style.display === 'block';
+            chatWindow.style.display = isVisible ? 'none' : 'block';
+            // Reset to options view when opening
+            if (!isVisible) {
+                chatOptions.style.display = 'block';
+                chatSMS.style.display = 'none';
+                chatLive.style.display = 'none';
+            }
+        });
+
+        // Handle option selection
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const option = btn.getAttribute('data-option');
+                chatOptions.style.display = 'none';
+                
+                if (option === 'sms') {
+                    chatSMS.style.display = 'block';
+                } else if (option === 'live') {
+                    chatLive.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
